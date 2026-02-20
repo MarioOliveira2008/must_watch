@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form method="post">
+            <input type="text" name="titulo-desejo" id="titulo-desejo" placeholder="titulo do desejo"value="{{desejo_selecionada.titulo_desejo if desejo_selecionada else '' }}" required>
+            <select name="tipo-desejo" id="tipo-desejo" required>
+            <option value="">
+                                Selecione o tipo...
+                            </option>
+                            <option value="Jogo">Jogo</option>
+                            <option value="Filme">Filme</option>
+                            <option value="Série">Série</option>
+                            <option value="Livro">Livro</option>
+            </select>   
+            
+            
+            <input type="text" name="indicado-por" id="indicado-por" placeholder="Quem indicou?"value="{{desejo_selecionada.indicado_por if desejo_selecionada else '' }}">
+            <input type="text" name="imagem" placeholder="insira a URL da imagem" value="{{desejo_selecionada.imagem if desejo_selecionada else '' }}">
+    
+            <button type="submit">Salvar</button>
+
+            {% if desejo_selecionada %}
+
+                <a href="{{ url_for('lista') }}" class="btn btn-secondary">Cancelar</a>
+
+            {% endif %}
+    </form>
+
+    <h2>Lista de desejos</h2>
+    {% if desejos %}
+
+    <ul>
+        {% for desejo in desejos %}
+            <li>
+                <img src="{{ desejo.imagem }}">
+                desejo: {{ desejo.titulo_desejo }}  <br>
+                tipo: {{ desejo.tipo_desejo }} <br>
+                indicado por: {{ desejo.indicado_por }}
+
+
+                <a href="{{ url_for('update', idDesejo=desejo.id) }}" class="btn btn-primary">Editar</a> 
+                <a href="{{ url_for('delete', idDesejo=desejo.id) }}" class="btn btn-danger">Apagar</a></li>     
+            
+            <!-- Controle para editar-->
+            {% endfor %}
+    </ul>
+
+
+    {% if indicado_por %}
+        <p>Indicado por: {{ indicado_por }}</p>
+    {% endif %}
+    
+    {% else %}
+
+         <p>Nenhum desejo cadastrado</p>
+
+    {% endif %}
+
+{% endblock %}
