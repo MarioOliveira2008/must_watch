@@ -11,7 +11,7 @@ class Desejo:
         self.tipo_desejo: Optional[str] = tipo_desejo
         self.indicado_por: Optional[str] = indicado_por
         self.imagem: Optional[str] = imagem
-        self.id: Optional[int] = id_desejo
+        self.id_desejo: Optional[int] = id_desejo
 
     @classmethod
     def id(cls, id: int) -> Self:
