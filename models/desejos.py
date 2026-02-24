@@ -41,13 +41,14 @@ class Desejo:
     def excluir_desejo(self) -> Cursor:
         with Database() as db:
             query: str = 'DELETE FROM desejos WHERE id_desejo = ?;'
-            params:tuple = (self.id,)
+            params:tuple = (self.id_desejo,)
             resultado: Cursor = db.executar(query, params)
             return resultado
         
     def atualizar_desejo(self) -> Cursor:
         with Database() as db:
             query: str = 'UPDATE desejos SET titulo_desejo = ?, tipo_desejo = ?, indicado_por = ?, imagem = ? WHERE id_desejo = ?;'
-            params:tuple = (self.titulo_desejo, self.tipo_desejo, self.indicado_por, self.imagem, self.id)
+            params:tuple = (self.titulo_desejo, self.tipo_desejo, self.indicado_por, self.imagem, self.id_desejo)
             resultado: Cursor = db.executar(query, params)
             return resultado
+        
