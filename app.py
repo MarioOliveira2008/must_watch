@@ -35,7 +35,6 @@ def delete(idDesejo):
     return redirect(url_for('lista')) 
 
 
-
 @app.route('/update/<int:idDesejo>', methods = ['GET', 'POST'])
 def update(idDesejo):
         if request.method == 'POST':
@@ -59,3 +58,4 @@ def update(idDesejo):
 @app.route('/ola')
 def ola_mundo():
     return "Olá, Mundo!"
+
