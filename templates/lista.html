@@ -38,8 +38,8 @@
                 indicado por: {{ desejo.indicado_por }}
 
 
-                <a href="{{ url_for('update', idDesejo=desejo.id) }}" class="btn btn-primary">Editar</a> 
-                <a href="{{ url_for('delete', idDesejo=desejo.id) }}" class="btn btn-danger">Apagar</a></li>     
+                <a href="{{ url_for('update', idDesejo=desejo.id_desejo) }}" class="btn btn-primary">Editar</a> 
+                <a href="{{ url_for('delete', idDesejo=desejo.id_desejo) }}" class="btn btn-danger">Apagar</a></li>     
             
             <!-- Controle para editar-->
             {% endfor %}
